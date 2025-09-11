@@ -59,7 +59,7 @@
     L.marker([-34.5898, -58.4320], {icon: redIcon}).bindPopup("<b>El Boliche de Nico</b>").addTo(palermo);
     L.marker([-34.5685, -58.4111], {icon: violetIcon}).bindPopup("<b>Jardim Japonês (pago)</b>").addTo(palermo);
     var outros = L.layerGroup().addTo(map);
-    L.marker([-34.5876, -58.4198], {icon: orangeIcon}).bindPopup("<b>APARTAMENTO-Avenida Raúl Scalabrini Ortiz 3560</b>").addTo(outros);
+    L.marker([-34.5876, -58.4198], {icon: BlueIcon}).bindPopup("<b>APARTAMENTO-Avenida Raúl Scalabrini Ortiz 3560</b>").addTo(outros);
     var overlayMaps = {"Centro": centro, "Recoleta": recoleta, "Palermo": palermo, "Outros": outros};
     L.control.layers({}, overlayMaps, {collapsed: false}).addTo(map);
   </script>
