@@ -21,6 +21,7 @@
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
+
     function coloredIcon(color) {
       return new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-' + color + '.png',
@@ -28,11 +29,14 @@
         iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
       });
     }
+
     var blueIcon = coloredIcon('blue');
     var greenIcon = coloredIcon('green');
     var orangeIcon = coloredIcon('orange');
     var redIcon = coloredIcon('red');
     var violetIcon = coloredIcon('violet');
+
+    // CAMADAS EXISTENTES
     var centro = L.layerGroup().addTo(map);
     L.marker([-34.6037, -58.3816], {icon: blueIcon}).bindPopup("<b>Obelisco</b>").addTo(centro);
     L.marker([-34.6090, -58.3925], {icon: blueIcon}).bindPopup("<b>Congresso</b>").addTo(centro);
@@ -44,6 +48,7 @@
     L.marker([-34.6058, -58.3820], {icon: redIcon}).bindPopup("<b>Santos Manjares</b>").addTo(centro);
     L.marker([-34.6050, -58.3740], {icon: redIcon}).bindPopup("<b>London City</b>").addTo(centro);
     L.marker([-34.6035, -58.3650], {icon: redIcon}).bindPopup("<b>Bella Gamba</b>").addTo(centro);
+
     var recoleta = L.layerGroup().addTo(map);
     L.marker([-34.5830, -58.3915], {icon: greenIcon}).bindPopup("<b>Museo Bellas Artes</b>").addTo(recoleta);
     L.marker([-34.5833, -58.3929], {icon: greenIcon}).bindPopup("<b>Floralis</b>").addTo(recoleta);
@@ -52,16 +57,33 @@
     L.marker([-34.5862, -58.3897], {icon: greenIcon}).bindPopup("<b>El Ateneo</b>").addTo(recoleta);
     L.marker([-34.5873, -58.3938], {icon: greenIcon}).bindPopup("<b>Museu Arte Decorativos</b>").addTo(recoleta);
     L.marker([-34.5860, -58.3920], {icon: greenIcon}).bindPopup("<b>Palacio Libertad</b>").addTo(recoleta);
+
     var palermo = L.layerGroup().addTo(map);
     L.marker([-34.5683, -58.4196], {icon: orangeIcon}).bindPopup("<b>Rosedal</b>").addTo(palermo);
     L.marker([-34.5691, -58.4173], {icon: orangeIcon}).bindPopup("<b>Planetário</b>").addTo(palermo);
     L.marker([-34.5776, -58.4162], {icon: orangeIcon}).bindPopup("<b>EcoParque</b>").addTo(palermo);
     L.marker([-34.5898, -58.4320], {icon: redIcon}).bindPopup("<b>El Boliche de Nico</b>").addTo(palermo);
     L.marker([-34.5685, -58.4111], {icon: violetIcon}).bindPopup("<b>Jardim Japonês (pago)</b>").addTo(palermo);
+
     var outros = L.layerGroup().addTo(map);
     L.marker([-34.5876, -58.4198], {icon: blueIcon}).bindPopup("<b>APARTAMENTO-Avenida Raúl Scalabrini Ortiz 3560</b>").addTo(outros);
-    var overlayMaps = {"Centro": centro, "Recoleta": recoleta, "Palermo": palermo, "Outros": outros};
+
+    // NOVA CAMADA: LA BOCA
+    var laBoca = L.layerGroup().addTo(map);
+    L.marker([-34.6342, -58.3630], {icon: blueIcon}).bindPopup("<b>Caminito</b><br>Rua colorida com arte e souvenirs").addTo(laBoca);
+    L.marker([-34.6355, -58.3640], {icon: redIcon}).bindPopup("<b>Estádio La Bombonera</b><br>Boca Juniors").addTo(laBoca);
+    L.marker([-34.6345, -58.3625], {icon: greenIcon}).bindPopup("<b>Loja de Artesanato</b><br>Souvenirs e lembranças").addTo(laBoca);
+
+    // CONTROLE DE CAMADAS
+    var overlayMaps = {
+      "Centro": centro,
+      "Recoleta": recoleta,
+      "Palermo": palermo,
+      "Outros": outros,
+      "La Boca": laBoca
+    };
     L.control.layers({}, overlayMaps, {collapsed: false}).addTo(map);
   </script>
 </body>
 </html>
+
