@@ -2,14 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>Mapa — Buenos Aires (regiões coloridas)</title>
+  <title>Mapa — Buenos Aires (regiões e museus)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
     body, html { height: 100%; margin: 0; padding: 0; }
     #map { width: 100%; height: 100vh; }
-    .legend { background: white; padding: 8px; line-height: 1.4; }
-    .legend .dot { display:inline-block; width:12px; height:12px; margin-right:6px; vertical-align:middle; }
   </style>
 </head>
 <body>
@@ -40,50 +38,42 @@
     var centro = L.layerGroup().addTo(map);
     L.marker([-34.6037, -58.3816], {icon: blueIcon}).bindPopup("<b>Obelisco</b>").addTo(centro);
     L.marker([-34.6090, -58.3925], {icon: blueIcon}).bindPopup("<b>Congresso</b>").addTo(centro);
-     L.marker([-34.5958, -58.3972], {icon: blueIcon}).bindPopup("<b> Teatro Colón  (pago) </b>").addTo(centro);
+    L.marker([-34.5958, -58.3972], {icon: blueIcon}).bindPopup("<b>Teatro Colón (pago)</b>").addTo(centro);
     L.marker([-34.6081, -58.3702], {icon: blueIcon}).bindPopup("<b>Casa Rosada</b>").addTo(centro);
-    L.marker([-34.6086, -58.3730], {icon: blueIcon}).bindPopup("<b>Catedral</b>").addTo(centro);
-    L.marker([-34.6089, -58.3737], {icon: blueIcon}).bindPopup("<b>Cabildo</b>").addTo(centro);
-    L.marker([-34.6012, -58.3836], {icon: redIcon}).bindPopup("<b>El Palacio de la Papa Frita</b>").addTo(centro);
-    L.marker([-34.6030, -58.3810], {icon: redIcon}).bindPopup("<b> restaurante Pippo</b>").addTo(centro);
-    L.marker([-34.6058, -58.3820], {icon: redIcon}).bindPopup("<b>restaurante Santos Manjares</b>").addTo(centro);
-    L.marker([-34.6050, -58.3740], {icon: redIcon}).bindPopup("<b> restaurante London City</b>").addTo(centro);
-    L.marker([-34.5924, -58.4321], {icon: redIcon}).bindPopup("<b> Restaurante Bella Gamba</b>").addTo(centro);
 
     var recoleta = L.layerGroup().addTo(map);
-    L.marker([-34.5830, -58.3915], {icon: greenIcon}).bindPopup("<b>Museo Bellas Artes</b>").addTo(recoleta);
-    L.marker([-34.5833, -58.3929], {icon: greenIcon}).bindPopup("<b>Floralis</b>").addTo(recoleta);
+    L.marker([-34.5830, -58.3915], {icon: greenIcon}).bindPopup("<b>Floralis</b>").addTo(recoleta);
     L.marker([-34.5879, -58.3923], {icon: greenIcon}).bindPopup("<b>Basílica N. Sra Pilar</b>").addTo(recoleta);
-    L.marker([-34.5838, -58.3950], {icon: greenIcon}).bindPopup("<b>Faculdade de Direito</b>").addTo(recoleta);
     L.marker([-34.5862, -58.3897], {icon: greenIcon}).bindPopup("<b>El Ateneo</b>").addTo(recoleta);
-    L.marker([-34.5873, -58.3938], {icon: greenIcon}).bindPopup("<b>Museu Arte Decorativos</b>").addTo(recoleta);
-    L.marker([-34.5860, -58.3920], {icon: greenIcon}).bindPopup("<b>Palacio Libertad</b>").addTo(recoleta);
 
     var palermo = L.layerGroup().addTo(map);
     L.marker([-34.5683, -58.4196], {icon: orangeIcon}).bindPopup("<b>Rosedal</b>").addTo(palermo);
     L.marker([-34.5691, -58.4173], {icon: orangeIcon}).bindPopup("<b>Planetário</b>").addTo(palermo);
-    L.marker([-34.5776, -58.4162], {icon: orangeIcon}).bindPopup("<b>EcoParque</b>").addTo(palermo);
-    L.marker([-34.5898, -58.4320], {icon: redIcon}).bindPopup("<b> restaurante - El Boliche de Nico</b>").addTo(palermo);
-    L.marker([-34.5685, -58.4111], {icon: violetIcon}).bindPopup("<b>Jardim Japonês (pago)</b>").addTo(palermo);
-    L.marker([-34.5769, -58.44871], {icon: orangeIcon}).bindPopup("<b> Museo de Arte Latinoamericano de Buenos Aires</b>").addTo(palermo);
-    L.marker([-34.5829, -58.43508], {icon: orangeIcon}).bindPopup("<b> Palacio Paz Hotel - Dinner</b>").addTo(palermo);
 
-    var outros = L.layerGroup().addTo(map);
-    L.marker([-34.5876, -58.4198], {icon: blueIcon}).bindPopup("<b>APARTAMENTO</b>").addTo(outros);
-
-    // NOVA CAMADA: LA BOCA
     var laBoca = L.layerGroup().addTo(map);
-    L.marker([-34.6342, -58.3630], {icon: blueIcon}).bindPopup("<b>Caminito</b><br>Rua colorida com arte e souvenirs").addTo(laBoca);
-    L.marker([-34.6355, -58.3640], {icon: redIcon}).bindPopup("<b>Estádio La Bombonera</b><br>Boca Juniors").addTo(laBoca);
-    L.marker([-34.6345, -58.3625], {icon: greenIcon}).bindPopup("<b>Loja de Artesanato</b><br>Souvenirs e lembranças").addTo(laBoca);
+    L.marker([-34.6342, -58.3630], {icon: blueIcon}).bindPopup("<b>Caminito</b>").addTo(laBoca);
+    L.marker([-34.6355, -58.3640], {icon: redIcon}).bindPopup("<b>Estádio La Bombonera</b>").addTo(laBoca);
+
+    // NOVA CAMADA: MUSEUS E CULTURA
+    var museus = L.layerGroup().addTo(map);
+    L.marker([-34.5830, -58.3915], {icon: violetIcon}).bindPopup("<b>Museu Nacional de Belas Artes</b>").addTo(museus);
+    L.marker([-34.5873, -58.3938], {icon: violetIcon}).bindPopup("<b>Museu Nacional de Artes Decorativas</b>").addTo(museus);
+    L.marker([-34.6161, -58.3737], {icon: violetIcon}).bindPopup("<b>El Zanjón de Granados</b>").addTo(museus);
+    L.marker([-34.5981, -58.4189], {icon: violetIcon}).bindPopup("<b>Museu das Crianças</b>").addTo(museus);
+    L.marker([-34.6350, -58.3647], {icon: violetIcon}).bindPopup("<b>Museo Estadio Diego Armando Maradona</b>").addTo(museus);
+    L.marker([-34.5774, -58.4213], {icon: violetIcon}).bindPopup("<b>Museu Evita</b>").addTo(museus);
+    L.marker([-34.5919, -58.3839], {icon: violetIcon}).bindPopup("<b>Palacio Paz</b>").addTo(museus);
+    L.marker([-34.5449, -58.4497], {icon: violetIcon}).bindPopup("<b>Museo River</b>").addTo(museus);
+    L.marker([-34.5991, -58.3735], {icon: violetIcon}).bindPopup("<b>Centro Cultural Borges</b>").addTo(museus);
+    L.marker([-34.5880, -58.3924], {icon: violetIcon}).bindPopup("<b>Centro Cultural Recoleta</b>").addTo(museus);
 
     // CONTROLE DE CAMADAS
     var overlayMaps = {
       "Centro": centro,
       "Recoleta": recoleta,
       "Palermo": palermo,
-      "Outros": outros,
-      "La Boca": laBoca
+      "La Boca": laBoca,
+      "Museus e Cultura": museus
     };
     L.control.layers({}, overlayMaps, {collapsed: false}).addTo(map);
   </script>
